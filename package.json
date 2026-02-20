@@ -1,0 +1,45 @@
+{
+  "name": "siteline-fastly-cdn",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-ready AWS Lambda processor for Fastly S3 access logs using @siteline/core",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsup --config config/tsup.config.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint --config config/eslint.config.mjs . --max-warnings=0",
+    "format": "prettier --config config/prettier.config.cjs --write .",
+    "test": "vitest run",
+    "package": "npm run build && bash scripts/package.sh",
+    "deploy": "bash scripts/deploy.sh",
+    "setup:s3": "bash scripts/setup-s3.sh",
+    "setup:lambda": "bash scripts/setup-lambda.sh",
+    "setup:eventbridge": "bash scripts/setup-eventbridge.sh",
+    "setup:fastly": "bash scripts/setup-fastly.sh",
+    "setup:all": "bash scripts/setup-all.sh",
+    "ci": "npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.992.0",
+    "@siteline/core": "^1.0.8",
+    "dotenv": "^17.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/aws-lambda": "^8.10.160",
+    "@types/node": "^25.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.56.0",
+    "@typescript-eslint/parser": "^8.56.0",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.1",
+    "rimraf": "^6.1.3",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}

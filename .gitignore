@@ -1,0 +1,9 @@
+node_modules/
+dist/*.js
+dist/*.map
+dist/*.zip
+coverage/
+.DS_Store
+.idea/
+.claude/
+config.bat
